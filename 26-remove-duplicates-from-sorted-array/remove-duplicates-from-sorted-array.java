@@ -1,23 +1,15 @@
-// this is not inplace solution
+//inplace solution
 
 class Solution {
     public int removeDuplicates(int[] nums) {
         int n = nums.length;
-        int[] unique = new int[n];
-
-        int temp = 0;
-        unique[temp++] = nums[0];  // The first element is always unique
-        for (int i = 1; i < n; i++) {
-            if (nums[i] != nums[i - 1]) {
-                unique[temp++] = nums[i];
+        int k = 1;
+        for(int i=1; i<n; i++){    //starting from 2nd position , 1st element will always be unique
+            if(nums[i]!=nums[i-1]){
+                nums[k] = nums[i];
+                k++;
             }
         }
-
-        // Copy the unique elements back to the original array if needed
-        for (int i = 0; i < temp; i++) {
-            nums[i] = unique[i];
-        }
-
-        return temp;
+        return k;
     }
 }
